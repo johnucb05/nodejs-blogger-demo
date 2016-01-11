@@ -6,10 +6,14 @@ Time spent: `12+ hrs`
 
 **To run:**
 
+Make sure you have your own instance of mongoDB to run (I do not have a copy in this repo).
 ```
 git clone https://github.com/crabdude/nodejs-blogger-demo.git
 cd nodejs-blogger-demo
 npm install
+mkdir data
+mkdir data/db
+mongod --dbpath data/db/
 npm start
 ```
 
