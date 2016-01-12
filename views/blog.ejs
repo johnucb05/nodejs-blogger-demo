@@ -6,49 +6,52 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <style>
-        body         { padding-top:80px; word-wrap:break-word; }
-        .hide {
-        display: none;
-        }
-        span.postTitle, span.user{
-        font-weight: bold;
-        }
+			body { 
+				padding-top:80px; 
+				word-wrap:break-word; 
+			}
+			.hide {
+				display: none;
+			}
+			span.postTitle, span.user{
+				font-weight: bold;
+			}
         </style>
         <script>
-        $(document).ready(function(){
-        $('#error1, #error2').addClass('hide');
-        $( "form.comment" ).submit(function( event ) {
-        var formData = $(this).serialize()
-        $.ajax({
-        url: "/comment",
-        method: 'POST',
-        data: formData,
-        success: function(data, textStatus, jqXHR) {
-        if (data) {
-        $('#error1').removeClass('hide');
-        } else {
-        window.location.reload()
-        }
-        }
-        });
-        event.preventDefault();
-        });
-        $( "form.logincomment" ).submit(function( event ) {
-        var formData = $(this).serialize()
-        $.ajax({
-        url: "/logincomment",
-        method: 'POST',
-        data: formData,
-        success: function(data, textStatus, jqXHR) {
-        window.location.reload()
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-        $('#error2').removeClass('hide').text(errorThrown)
-        }
-        });
-        event.preventDefault();
-        });
-        });
+			$(document).ready(function(){
+				$('#error1, #error2').addClass('hide');
+				$( "form.comment" ).submit(function( event ) {
+					var formData = $(this).serialize()
+				$.ajax({
+					url: "/comment",
+					method: 'POST',
+					data: formData,
+					success: function(data, textStatus, jqXHR) {
+						if (data) {
+							$('#error1').removeClass('hide');
+						} else {
+							window.location.reload()
+						}
+					}
+				});
+				event.preventDefault();
+				});
+				$( "form.logincomment" ).submit(function( event ) {
+					var formData = $(this).serialize()
+					$.ajax({
+						url: "/logincomment",
+						method: 'POST',
+						data: formData,
+						success: function(data, textStatus, jqXHR) {
+							window.location.reload();
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							$('#error2').removeClass('hide').text(errorThrown);
+						}
+					});
+					event.preventDefault();
+				});
+			});
         </script>
     </head>
     <body>
